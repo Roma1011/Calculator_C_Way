@@ -1,0 +1,108 @@
+# depslib dependency file v1.0
+1654604981 source:c:\users\student\desktop\cwork\calc 1.2\minwindow.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	"StoreRoom.c"
+	"WNDclassRoom.c"
+	"globalvr.c"
+
+1654606749 c:\users\student\desktop\cwork\calc 1.2\storeroom.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	"GlobalVR.c"
+	"ForCreate.c"
+	"Equal.c"
+	"Factorial.c"
+	"WMcommand.c"
+	"KeyBord.c"
+	"DrawItem.c"
+	"newproc.c"
+
+1654542083 c:\users\student\desktop\cwork\calc 1.2\globalvr.c
+
+1654605394 c:\users\student\desktop\cwork\calc 1.2\forcreate.c
+	<windows.h>
+	"GlobalVR.c"
+
+1654354448 c:\users\student\desktop\cwork\calc 1.2\equal.c
+	<windows.h>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	"globalvr.c"
+	"BigData.c"
+	"BigDataMinusOP.c"
+	"BigDataMul.c"
+	"FloatPlus.c"
+	"DecimalSub.c"
+	"DecMul.c"
+
+1654541843 c:\users\student\desktop\cwork\calc 1.2\bigdata.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1654541887 c:\users\student\desktop\cwork\calc 1.2\bigdataminusop.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1654541997 c:\users\student\desktop\cwork\calc 1.2\bigdatamul.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1654542033 c:\users\student\desktop\cwork\calc 1.2\floatplus.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1654541676 c:\users\student\desktop\cwork\calc 1.2\decimalsub.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1654612759 c:\users\student\desktop\cwork\calc 1.2\decmul.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1654198476 c:\users\student\desktop\cwork\calc 1.2\factorial.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	"GlobalVR.c"
+	"BigNumFactor.c"
+
+1654541688 c:\users\student\desktop\cwork\calc 1.2\bignumfactor.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1654548109 c:\users\student\desktop\cwork\calc 1.2\wmcommand.c
+	"GlobalVR.c"
+	"Limitations.c"
+	"AnothSystCnvrt.c"
+
+1654288670 c:\users\student\desktop\cwork\calc 1.2\limitations.c
+	"globalvr.c"
+
+1653650954 c:\users\student\desktop\cwork\calc 1.2\anothsystcnvrt.c
+
+1654551390 c:\users\student\desktop\cwork\calc 1.2\keybord.c
+	<windows.h>
+	"GlobalVR.c"
+
+1654605201 c:\users\student\desktop\cwork\calc 1.2\drawitem.c
+
+1654551276 c:\users\student\desktop\cwork\calc 1.2\newproc.c
+
+1653488364 c:\users\student\desktop\cwork\calc 1.2\wndclassroom.c
+	<windows.h>
+
+1654433467 c:\users\student\desktop\cwork\calc 1.2\swap.h
+
+1654351424 c:\users\student\desktop\cwork\calc 1.2\shifting.lib
+

@@ -1,0 +1,613 @@
+#pragma comment(lib,"winmm.lib")
+long ArithmeticalOP(UINT wParam,HWND hWnd,LPARAM lParam,UINT Message)
+{
+static HBITMAP LodIMg;
+//-------------------------------
+static TCHAR Bin[200];//		|
+static TCHAR HexAr[200];//		|
+static TCHAR Oct[200];//		|
+static TCHAR Sep[200];//		|
+//------------------------------
+static int Flag=0;//			|
+static int Correct;//			|
+static int Limitindex;//		|
+static int DotCntr;//			|
+static int SuperVisor;//		|
+static int SuperVisorForCnvrt;//|
+static int returnValue;//		|
+static int Num1;//				|
+static int Num2;//				|
+//------------------------------
+	switch(LOWORD(wParam))
+	{	
+		case 101:
+		SendMessage(hWnd,WM_CLOSE,0,0);
+		break;
+//------------------------------------------------------------------------------------------
+		case NUM_ONE:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"1");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+		sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//----------------------------------------------------------------------------------------------
+		case NUM_TWO:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"2");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+			
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//----------------------------------------------------------------------------------------------
+		case NUM_THREE:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"3");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//------------------------------------------------------------------------------------------------
+		case NUM_FOUR:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"4");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//-------------------------------------------------------------------------------------------------
+		case NUM_FIVE:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"5");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case NUM_SIX:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"6");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case NUM_SEVEN:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"7");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case NUM_EIGHT:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"8");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case NUM_NINE:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+					memset(NumLine,0,strlen(NumLine));
+					Flag=0;
+					SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"9");
+				LimitNull(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case NUM_ZIRO:
+		{
+			if(strlen(NumLine)<20)
+			{
+				if(Flag>0)
+				{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				}
+			SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+			strcat(NumLine,"0");
+			LimitNull(hWnd);
+			SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			SetFocus(hWnd);
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case DIVIDE:
+		{
+			if(Flag>0)
+			{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+			if(Counter>0)
+			{
+				LimitFunc(hWnd);
+			}
+			else
+			{
+				Counter++;
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"÷");
+				LimitNotAgan(hWnd,NumLine);
+				LimitFunc(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				DotCntr=0;
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case MULTIPLE:
+		{
+			if(Flag>0)
+			{
+			memset(NumLine,0,strlen(NumLine));
+			Flag=0;
+			SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+			if(Counter>0)
+			{
+			LimitFunc(hWnd);
+			}
+			else
+			{
+			Counter++;
+			SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+			strcat(NumLine,"X");
+			LimitNotAgan(hWnd,NumLine);
+			LimitFunc(hWnd);
+			SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			SetFocus(hWnd);
+			DotCntr=0;
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case MINUS:
+			if(Flag>0)
+			{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+			if(Counter>0)
+			{
+				LimitFunc(hWnd);
+			}
+			else
+			{
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"-");
+				LimitNotAgan(hWnd,NumLine);
+				LimitFunc(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				DotCntr=0;
+				if(NumLine[0]=='-'&& SuperVisor==0)
+				{
+					Counter=0;
+					SuperVisor++;
+
+				}
+				else
+					Counter++;
+
+			if(ClickOF!=1)
+				sndPlaySound("ClickS.wav",SND_ASYNC);
+			}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case PLUS:
+			if(Flag>0)
+			{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+			if(Counter>0)
+			{
+				LimitFunc(hWnd);
+			}
+			else
+			{
+				Counter++;
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"+");
+				LimitNotAgan(hWnd,NumLine);
+				LimitFunc(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				DotCntr=0;
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		break;
+//---------------------------------------------------------------------------------------------------
+		case CE:
+			memset(NumLine,0,strlen(NumLine));
+			memset(Bin,0,strlen(Bin));
+			memset(HexAr,0,strlen(HexAr));
+			memset(Oct,0,strlen(Oct));
+			memset(Sep,0,strlen(Sep));
+			Counter=0;
+			SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+			SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+			SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+			SetFocus(hWnd);
+			DotCntr=0;
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		break;
+//---------------------------------------------------------------------------------------------------
+		case FACTRORIAL:
+			if(Flag>0)
+			{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+		Factorial(NumLine);
+		SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+		//	if(strlen(NumLine)>=114)
+		//		ShowScrollBar(hEditWindow,SB_VERT,TRUE);
+		SetFocus(hWnd);
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		break;
+//---------------------------------------------------------------------------------------------------
+		case DEL:
+		if(NumLine[0]!='\0')
+		{
+			if(Flag>0)
+			{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+		Correct=strlen(NumLine);
+			if(NumLine[Correct-1]=='+'||NumLine[Correct-1]=='-'||NumLine[Correct-1]=='X'||NumLine[Correct-1]=='+'||NumLine[Correct-1]=='÷'||NumLine[Correct-1]=='.')
+			{
+				Counter=0;
+				DotCntr=0;
+			}
+		NumLine[Correct-1]='\0';
+		SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			if(strlen(NumLine)<19)
+			{
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		SetFocus(hWnd);
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case DOT:
+		{
+			if(Flag>0)
+			{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+		Correct=strlen(NumLine);
+			if(NumLine[Correct-1]=='+'||NumLine[Correct-1]=='-'||NumLine[Correct-1]=='X'||NumLine[Correct-1]=='+'||NumLine[Correct-1]=='÷')
+				DotCntr=0;
+			else if(DotCntr>0)
+			{
+				NumLine[Correct-1]='\0';
+			}
+			else
+			{
+				DotCntr++;
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,".");
+				LimitNotAgan(hWnd,NumLine);
+				LimitFunc(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case POW:
+			if(Flag>0)
+			{
+				memset(NumLine,0,strlen(NumLine));
+				Flag=0;
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			}
+			if(Counter>0)
+			{
+				LimitFunc(hWnd);
+			}
+			else
+			{
+				Counter++;
+				SendDlgItemMessage(hWnd,121,WM_GETTEXT,sizeof(NumLine),(long)NumLine);
+				strcat(NumLine,"^");
+				LimitNotAgan(hWnd,NumLine);
+				LimitFunc(hWnd);
+				SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+				SetFocus(hWnd);
+				if(ClickOF!=1)
+					sndPlaySound("ClickS.wav",SND_ASYNC);
+			}
+		break;
+		case ONF:
+			ClickOF++;
+			if(ClickOF==1)
+			{
+				LodIMg=(HBITMAP)LoadImage(NULL,"N.bmp",IMAGE_BITMAP,30,30,LR_LOADFROMFILE);
+				SendDlgItemMessage(hWnd,ONF,BM_SETIMAGE,IMAGE_BITMAP,(LPARAM)LodIMg);
+			}
+			if(ClickOF==2)
+			{
+				LodIMg=(HBITMAP)LoadImage(NULL,"F.bmp",IMAGE_BITMAP,30,30,LR_LOADFROMFILE);
+				SendDlgItemMessage(hWnd,ONF,BM_SETIMAGE,IMAGE_BITMAP,(LPARAM)LodIMg);
+					ClickOF=0;
+			}
+		break;
+//---------------------------------------------------------------------------------------------------
+		case EQUAL:
+		if(NumLine[0]!='\0')
+		{
+			if(strlen(NumLine)<3)
+				break;
+		EqualFunc(NumLine);
+		Counter=0;
+		SuperVisor=0;
+		SendDlgItemMessage(hWnd,121,WM_SETTEXT,0,(long)NumLine);
+			if(strlen(NumLine)>=114)
+				ShowScrollBar(hEditWindow,SB_VERT,FALSE);
+		SetFocus(hWnd);
+			if(strlen(NumLine)<19)
+			{
+				BinaryConvert(NumLine,Bin);
+				SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+				SepConvert(NumLine,Sep);
+				SendDlgItemMessage(hWnd,SEPT,WM_SETTEXT,0,(long)Sep);
+				OctConvert(NumLine,Oct);
+				SendDlgItemMessage(hWnd,OCT,WM_SETTEXT,0,(long)Oct);
+				HexConvert(NumLine,HexAr);
+				SendDlgItemMessage(hWnd,HEX,WM_SETTEXT,0,(long)HexAr);
+			}
+		if(ClickOF!=1)
+			sndPlaySound("ClickS.wav",SND_ASYNC);
+		}
+		break;
+	}
+	if(strlen(Bin)>=24)
+	{
+		font[1]=CreateFont(10,8,0,0,FW_ULTRABOLD,0,0,0,0,0,0,0,0,"Helvetica");
+		SendDlgItemMessage(hWnd,BIN,WM_SETFONT,(UINT)font[1],0);
+		SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+	}
+	if(strlen(Bin)<24)
+	{
+		font[1]=CreateFont(18,10,0,0,FW_ULTRABOLD,0,0,0,0,0,0,0,0,"Helvetica");
+		SendDlgItemMessage(hWnd,BIN,WM_SETFONT,(UINT)font[1],0);
+		SendDlgItemMessage(hWnd,BIN,WM_SETTEXT,0,(long)Bin);
+	}
+return 0;
+}
